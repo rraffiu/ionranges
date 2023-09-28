@@ -28,3 +28,13 @@ jobs:
       with:
         name: generated-pdf
         path: ./menuscript.pdf
+
+    - name: Move PDF to gh-pages Branch
+      run: |
+        mkdir -p pdf
+        mv menuscript.pdf pdf/
+        git checkout -b gh-pages
+        git add pdf/
+        git commit -m "Add PDF to gh-pages"
+        git push origin gh-pages
+     working-directory: ./
