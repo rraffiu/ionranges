@@ -28,6 +28,9 @@ jobs:
       with:
         name: generated-pdf
         path: ./menuscript.pdf
+    
+    - name: Checkout Repository
+      uses: actions/checkout@v2
 
     - name: Move PDF to gh-pages Branch
       run: |
