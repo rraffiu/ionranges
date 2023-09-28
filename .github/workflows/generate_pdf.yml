@@ -1,0 +1,30 @@
+name: Generate PDF
+
+on:
+  push:
+    branches:
+      - main  # Modify this to match your main branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Install Dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y pandoc texlive-xetex
+
+    - name: Generate PDF
+      run: |
+        pandoc -s ionranges.md -o ionranges.pdf
+      working-directory: ./
+
+    - name: Upload PDF Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: generated-pdf
+        path: ./ionranges.pdf
