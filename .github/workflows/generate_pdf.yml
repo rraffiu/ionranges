@@ -29,6 +29,11 @@ jobs:
         name: generated-pdf
         path: ./menuscript.pdf
 
+    - name: Configure Git Identity
+      run: |
+        git config --global user.email "rraffiu@gmail.com"
+        git config --global user.name "Rafi Ullah"
+
     - name: Move PDF to gh-pages Branch
       run: |
         mkdir -p pdf
