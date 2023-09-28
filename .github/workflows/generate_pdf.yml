@@ -43,3 +43,5 @@ jobs:
         git commit -m "Add PDF to gh-pages"
         git push origin gh-pages
       working-directory: ./
+      env:
+        PDF_GH_PAGES: ${{ secrets.PDF_GH_PAGES }}
