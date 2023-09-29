@@ -28,19 +28,3 @@ jobs:
       with:
         name: generated-pdf
         path: ./menuscript.pdf
-
-
-    - name: Move PDF to gh-pages Branch
-      run: |
-        git config --global user.email "rraffiu@gmail.com"
-        git config --global user.name "Rafi Ullah"
-        mkdir -p pdf
-        mv menuscript.pdf pdf/
-        git checkout -b gh-pages
-        git add pdf/
-        git commit -m "Add PDF to gh-pages"
-        git remote set-url origin "https://github.com/${{ github.repository }}.git"
-        git push --force origin gh-pages
-      working-directory: ./
-      env:
-        PDF_GH_PAGES: ${{ secrets.PDF_GH_PAGES }}
